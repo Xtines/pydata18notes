@@ -1,9 +1,10 @@
 
 
-Wednesday 4:20 PM–5:00 PM in Central Park West (#6501)
+
 Generational changes in support for gun laws: a case study in computational statistics
 ===========================================================================
 by Allen Downey, October 17 2018
+
 Audience level:
 Intermediate
 
