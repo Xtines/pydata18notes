@@ -36,6 +36,27 @@ Section 3. Approach comparison
 
 
   
+
+### Data and modeling prep steps
+
+- Time Series EDA
+- series transformation
+    - applying first differencing and ...
+    
+- model implementation via scikit-learn/stats models
+- model diagnostic
+    - remaining noise/error terms should be iid
+
+**-> Lecturer had a 3 hr Tutorial at PyData SanFran in 2016 on Youtube**
+
+##### Model formulation
+
+Markov Switching Model: A Markov Chain model relates the past state to the current state. 
+  - ex: A simple version with 2 states
+
+
+
+  
 #### ARMA Autoregressive Moving Average Model
 
 Future value Y(t+H) is a function of previous Yis and a series of "shocks" or error terms.
@@ -53,5 +74,26 @@ An ARIMA model is ARMA applied/extended to a non-stationary series.
 
 - applied to non-stationary series only
 - auto-covariates only a function of the time-lag
+
+#### Vector AutoRegressive model (VAR)
+
+- a type of multivariate time series modeling
+- a system of K linear equations estimated simultaneously
+- only applies to stationary series
+    - non-stationary series can be transformed into stationary ones using differencing
+    - Feedback effects: K equations where a given Yi,t can be affected by Yj, t-1 of other equations
+- example: 2 series of consumer sentiment and beer consumption
+    - use VARMAX function in python
+- model selection
+- final needed step: inverse transform back to the original form Yt+H
+
+- VAR model forecast using RMSE, root mean squared error
+  - need to put the RMSE results in the original context or scale to get to "Percentage error relative to the mean"
+  
+
+#### (RNN) Recurrent Neural Network
+
+- forecast output is a function of not only input Xt but also previous period h(t-1)
+
 
 
