@@ -35,7 +35,6 @@ Section 3. Approach comparison
 *Forecasting*: predicting future values of the series using current set of info
 
 
-  
 
 ### Data and modeling prep steps
 
@@ -47,7 +46,8 @@ Section 3. Approach comparison
 - model diagnostic
     - remaining noise/error terms should be iid
 
-**-> Lecturer had a 3 hr Tutorial at PyData SanFran in 2016 on Youtube**
+**-> Lecturer suggested checking out a [3-hr online Tutorial] (https://www.youtube.com/watch?v=tJ-O3hk1vRw) at PyData SanFran in 2016 on Youtube**
+
 
 ##### Model formulation
 
@@ -55,8 +55,6 @@ Markov Switching Model: A Markov Chain model relates the past state to the curre
   - ex: A simple version with 2 states
 
 
-
-  
 #### ARMA Autoregressive Moving Average Model
 
 Future value Y(t+H) is a function of previous Yis and a series of "shocks" or error terms.
