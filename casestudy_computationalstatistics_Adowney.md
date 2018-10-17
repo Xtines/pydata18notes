@@ -8,6 +8,8 @@ by Allen Downey, October 17 2018
 Audience level:
 Intermediate
 
+Speaker's [slides can be downloaded here](downey@allendowney.com/blog)
+
 ### Description 
 In the United States, support for gun control has been declining among all age groups since 1990; among young adults, support is substantially lower than among previous generations.  Using data from the General Social Survey (GSS), I perform age-period-cohort analysis to measure and predict these generational effects.
 
