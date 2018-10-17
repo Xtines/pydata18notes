@@ -46,7 +46,7 @@ Section 3. Approach comparison
 - model diagnostic
     - remaining noise/error terms should be iid
 
-**-> Lecturer suggested checking out a [3-hr online Tutorial] (https://www.youtube.com/watch?v=tJ-O3hk1vRw) at PyData SanFran in 2016 on Youtube**
+**-> Lecturer suggested checking out a [3-hr online Tutorial](https://www.youtube.com/watch?v=tJ-O3hk1vRw) at PyData SanFran in 2016 on Youtube**
 
 
 ##### Model formulation
