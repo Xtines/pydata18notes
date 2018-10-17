@@ -94,6 +94,23 @@ An ARIMA model is ARMA applied/extended to a non-stationary series.
 #### (RNN) Recurrent Neural Network
 
 - forecast output is a function of not only input Xt but also previous period h(t-1)
+- implemented in Keras, Python's deep learning libary
+    - LSTM model: formulate the RNN as a regularized linear ?regression model
 
+### Approach comparison
+
+**For uni-variate time series analyis**
+- ARIMA - is state invariant
+- MSAR - is state-dependent
+
+
+**For multi-variate time series**
+- VAR: 
+    - numerical time series such as financial and business time series
+    - applied to stationary series
+    - data pre-processing is straightforward
+    
+- LSTM: images, texts, and all numerical time series
+  - data preprocessing is more involved, time consuming
 
 
