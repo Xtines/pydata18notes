@@ -103,18 +103,28 @@ First, notice that our index is not particularly informative.  This is common wh
 
 Lets set a new index to be the pickup time.  Sorting in parallel is hard, so this is an expensive operation.
 
-```df2 = df.set_index('tpep_pickup_datetime').persist()
+```df2 = df.set_index('tpep_pickup_datetime').persist() # sorting/indexing by time of pickup
+
+
+Q & A: We are writing data into pandas dataframes, not changing csv files. 
+Note: see the plot Dask Memory Use under the left-hand column of Dask buttons - if columns for Bytes stored show a lot of orange versus blue, then it means we are running out of RAM. 
+
 
 Our dataframe is split into roughly as many partitions as before, but now we know the time range of each partition.  Internally, the divisions between partitions is stored in the divisions attribute.
 
 ```df2.divisions
 
-### Question: What took up the most time in the operation above?
+
+### Questions: 
+
+What took up the most time in the operation above?
+A: 
 
 What colors are most prominent in the task stream plot?
+A:
 
 When you hover over some of these bars, what do they say?
-
+A: 
 
 ### Fast operations along the index
 
