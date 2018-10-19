@@ -105,8 +105,9 @@ First, notice that our index is not particularly informative.  This is common wh
 
 Lets set a new index to be the pickup time.  Sorting in parallel is hard, so this is an expensive operation.
 
-```
-df2 = df.set_index('tpep_pickup_datetime').persist() # sorting/indexing by time of pickup
+```python
+#Sorting/indexing by time of pickup
+df2 = df.set_index('tpep_pickup_datetime').persist() 
 ```
 
 
@@ -116,7 +117,7 @@ Note: see the plot Dask Memory Use under the left-hand column of Dask buttons - 
 
 Our dataframe is split into roughly as many partitions as before, but now we know the time range of each partition.  Internally, the divisions between partitions is stored in the divisions attribute.
 
-`df2.divisions`
+```df2.divisions
 
 
 ### Questions: 
