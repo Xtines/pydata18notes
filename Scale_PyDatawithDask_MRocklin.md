@@ -184,7 +184,7 @@ total = dask.delayed(sum)(results)
 -  What are your thoughts on delaying `sum`?  This function is both computational but also fast to run.
 
 
-## Rebuild Dataframe algorithms manually - if we didn't have Dask how would be parallel compute
+## Rebuild Dataframe algorithms manually - if we didn't have Dask how would we parallel compute? 
 
 In the last notebook we used Dask Dataframe to load CSV data from the cloud and then perform some basic analyses.  In these examples Dask dataframe automatically built our parallel algorithms for us.
 
@@ -260,4 +260,33 @@ So your goal is to parallelize the code above (which has been copied below) usin
 
 
 ```%load solutions/01-delayed-dataframe.py
+
+
+# Q & A
+
+## Q: how to run on local computer instead of on cloud? 
+```pip install dask
+
+### Single Machine: dask.distributed
+The dask.distributed scheduler works well on a single machine. It is sometimes preferred over the default scheduler for the following reasons:
+
+It provides access to asynchronous API, notably Futures
+It provides a diagnostic dashboard that can provide valuable insight on performance and progress
+It handles data locality with more sophistication, and so can be more efficient than the multiprocessing scheduler on workloads that require multiple processes
+You can create a dask.distributed scheduler by importing and creating a Client with no arguments. This overrides whatever default was previously set.
+
+```
+from dask.distributed import Client
+client = Client()
+```
+This will create a Dash dashboard
+
+
+### Running Dask on the cloud
+
+Highly recommend taking Jupyter's documentation, takes about an hour to get Dask running. 
+
+https://docs.dask.org/en/latest/setup/cloud.html
+
+
 
