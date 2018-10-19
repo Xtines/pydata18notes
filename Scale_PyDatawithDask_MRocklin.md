@@ -71,3 +71,58 @@ In particular, we called `df = df.persist()` to load all of the CSV data into di
 
 In this section we're going to reset our cluster and run the same computations, but without persisting our data in memory.  What happens to our computation times?  Why?
 
+
+#### *Exercise*: What did our workers spend their time doing?
+
+To answer this question look at the Task Stream dashboard plot.  It will tell you the activity on each core of your cluster (y-axis) over time (x-axis).  You can hover over each rectangle of this plot to determine what kind of task it was.  What kinds of tasks are most common and take up the most time?
+
+*Extra*: if you're ahead of the group you might also want to look at the Profile dashboard plot.  You can access this by selecting the orange Dask icon on the left side of your JupyterLab page.  The profile plot is an interactive [Flame graph](http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html)
+
+
+
+## Dask DataFrame Design
+
+We briefly discuss the design of Dask dataframes.  Then we follow this section with exercises that dive into this design.
+
+<img src="http://docs.dask.org/en/latest/_images/dask-dataframe.svg"
+     width="50%">
+     
+Dask dataframes are composed of many *partitions*, split along the index.  Each partition is a Pandas dataframe or Series.  You can see the number of partitions in the rendering of a Dask Dataframe.
+
+```df
+
+And the type of each partition using the `map_partitions` method.
+
+```df.map_partitions(type).compute()
+
+### Divisions and the Index
+
+Just like Pandas, Dask Dataframe has an *index*, a special column that indexes the rows of our dataframe.  In Dask this index has an additional purpose, it serves as a sorted partitioning of our data.  This makes some algorithms more efficient.  In this section, we'll sort our data by time and dive into the index a bit more deeply.
+
+First, notice that our index is not particularly informative.  This is common when you load a dataset from CSV data, which generally doesn't store index or sorting information.
+
+Lets set a new index to be the pickup time.  Sorting in parallel is hard, so this is an expensive operation.
+
+```df2 = df.set_index('tpep_pickup_datetime').persist()
+
+Our dataframe is split into roughly as many partitions as before, but now we know the time range of each partition.  Internally, the divisions between partitions is stored in the divisions attribute.
+
+```df2.divisions
+
+### Question: What took up the most time in the operation above?
+
+What colors are most prominent in the task stream plot?
+
+When you hover over some of these bars, what do they say?
+
+
+### Fast operations along the index
+
+Having a sorted dataframe allows for fast operations, like random access lookup and timeseries operations.
+
+```python
+df2.loc['2015-05-05'].compute()  # pick out one day of data
+
+df2.passenger_count.resample('1h').mean().compute().plot()
+```
+
