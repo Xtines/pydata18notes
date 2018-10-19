@@ -262,10 +262,12 @@ So your goal is to parallelize the code above (which has been copied below) usin
 ```%load solutions/01-delayed-dataframe.py
 
 
-# Q & A
+Q & A
+--------------------
 
 ## Q: how to run on local computer instead of on cloud? 
-```pip install dask
+First -
+`pip install dask`
 
 ### Single Machine: dask.distributed
 The dask.distributed scheduler works well on a single machine. It is sometimes preferred over the default scheduler for the following reasons:
@@ -279,13 +281,14 @@ You can create a dask.distributed scheduler by importing and creating a Client w
 from dask.distributed import Client
 client = Client()
 ```
-This will create a Dash dashboard
+This will create a Dash dashboard.
 
 
 ### Running Dask on the cloud
 
 Highly recommend taking Jupyter's documentation, takes about an hour to get Dask running. 
 
+See Setup and On the Cloud
 https://docs.dask.org/en/latest/setup/cloud.html
 
 
