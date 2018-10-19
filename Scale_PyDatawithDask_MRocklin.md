@@ -95,6 +95,7 @@ And the type of each partition using the `map_partitions` method.
 
 ```df.map_partitions(type).compute()
 
+
 ### Divisions and the Index
 
 Just like Pandas, Dask Dataframe has an *index*, a special column that indexes the rows of our dataframe.  In Dask this index has an additional purpose, it serves as a sorted partitioning of our data.  This makes some algorithms more efficient.  In this section, we'll sort our data by time and dive into the index a bit more deeply.
@@ -132,7 +133,8 @@ Having a sorted dataframe allows for fast operations, like random access lookup 
 
 ```python
 df2.loc['2015-05-05'].compute()  # pick out one day of data
-
 df2.passenger_count.resample('1h').mean().compute().plot()
 ```
+
+
 
