@@ -93,8 +93,9 @@ Dask dataframes are composed of many *partitions*, split along the index.  Each 
 
 And the type of each partition using the `map_partitions` method.
 
-```df.map_partitions(type).compute()
-
+```
+df.map_partitions(type).compute()
+```
 
 ### Divisions and the Index
 
@@ -104,7 +105,9 @@ First, notice that our index is not particularly informative.  This is common wh
 
 Lets set a new index to be the pickup time.  Sorting in parallel is hard, so this is an expensive operation.
 
-```df2 = df.set_index('tpep_pickup_datetime').persist() # sorting/indexing by time of pickup
+```
+df2 = df.set_index('tpep_pickup_datetime').persist() # sorting/indexing by time of pickup
+```
 
 
 Q & A: We are writing data into pandas dataframes, not changing csv files. 
@@ -113,7 +116,7 @@ Note: see the plot Dask Memory Use under the left-hand column of Dask buttons - 
 
 Our dataframe is split into roughly as many partitions as before, but now we know the time range of each partition.  Internally, the divisions between partitions is stored in the divisions attribute.
 
-```df2.divisions
+`df2.divisions`
 
 
 ### Questions: 
@@ -135,6 +138,3 @@ Having a sorted dataframe allows for fast operations, like random access lookup 
 df2.loc['2015-05-05'].compute()  # pick out one day of data
 df2.passenger_count.resample('1h').mean().compute().plot()
 ```
-
-
-
